@@ -1,7 +1,7 @@
-package com.company.entity;
+package com.ivan.entity;
 
 public class Person {
-    private int floor;
+    private final int floor;
 
     public int getFloor() {
         return floor;

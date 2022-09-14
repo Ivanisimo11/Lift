@@ -1,23 +1,24 @@
-package com.company.entity;
+package com.ivan.entity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Lift {
-    private ArrayList<Person> personsInTheLift = new ArrayList<>(5);
+    private final List<Person> peopleInTheLift = new ArrayList<>(5);
     private int floor;
     private boolean isGoingUp = true;
 
     public void addPersonInTheLift(Person person) {
-        personsInTheLift.add(person);
+        peopleInTheLift.add(person);
     }
 
     public void removePersonInTheLift(Person person) {
-        personsInTheLift.remove(person);
+        peopleInTheLift.remove(person);
     }
 
     public int smallestFloorForPerson(int max) {
         int min = max;
-        for (Person person : personsInTheLift) {
+        for (Person person : peopleInTheLift) {
             if (person.getFloor() < min && person.getFloor() > floor) {
                 min = person.getFloor();
             }
@@ -27,7 +28,7 @@ public class Lift {
 
     public int biggestFloorForPerson() {
         int max = 0;
-        for (Person person : personsInTheLift) {
+        for (Person person : peopleInTheLift) {
             if (person.getFloor() > max && person.getFloor() < floor) {
                 max = person.getFloor();
             }
@@ -35,18 +36,12 @@ public class Lift {
         return max;
     }
 
-
     public Lift(int floor) {
         this.floor = floor;
     }
 
-    public boolean canEnterTheLift() {
-        return personsInTheLift.size() < 5;
-    }
-
-
-    public void setPersonsInTheLift(ArrayList<Person> personsInTheLift) {
-        this.personsInTheLift = personsInTheLift;
+    public boolean canCarryMorePeople() {
+        return peopleInTheLift.size() < 5;
     }
 
     public int getFloor() {
@@ -67,16 +62,21 @@ public class Lift {
 
     @Override
     public String toString() {
-        int personInLift = personsInTheLift.size();
+        int personInLift = peopleInTheLift.size();
         StringBuilder lift = new StringBuilder();
-        for (Person person : personsInTheLift) {
+        for (Person person : peopleInTheLift) {
             lift.append(person.toString()).append(" ");
         }
         lift.append("  ".repeat(Math.max(0, 5 - personInLift)));
         return lift.toString();
     }
 
-    public ArrayList<Person> getPersonsInTheLift() {
-        return personsInTheLift;
+    public List<Person> getPeopleInTheLift() {
+        return peopleInTheLift;
+    }
+
+
+    public boolean isEmpty() {
+        return peopleInTheLift.isEmpty();
     }
 }
