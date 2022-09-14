@@ -29,7 +29,7 @@ public class Lift {
     public int biggestFloorForPerson() {
         int max = 0;
         for (Person person : peopleInTheLift) {
-            if (person.getFloor() > max && person.getFloor() < floor) {
+            if (person.getFloor() > max && person.getFloor() <= floor) {
                 max = person.getFloor();
             }
         }
